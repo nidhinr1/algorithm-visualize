@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+</head>
+<body style="background-color: lightskyblue; color: black;">
+    <div style="padding-top: 50px; padding-left: 600px;">
+    <img src="{% static 'login.png' %}">
+    <h1>Student Login</h1>
+    <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+    <a href="{% url 'signup' %}">Don't have Account Create</a>
+    </form>
+    </div>
+</body>
+</html>

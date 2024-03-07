@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System.</title>
+    <style>
+        table{
+            width: 75%;
+            height: 300%;
+        }
+        table,th,td{
+            border: 2px solid black;
+            border-collapse: collapse;
+            size: 20px;
+        }
+        body{
+            background-color: lightblue;
+        }
+        h1{
+            font-size:50px;
+        }
+        th,td{
+            padding: auto;
+        }
+    </style>
+</head>
+<body>
+    {% if request.user.is_authenticated %}
+    <script>
+        alert('You have logged in.');
+    </script>
+    <div style="padding-left: 30%;">    
+        <h1>Student Management System.</h1>
+    </div>
+    <div style="padding-left: 25%;">
+        <table>
+            <tr>
+                <th>Admission no:</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Course</th>
+                <th>Year</th>    
+            </tr>
+            {% for i in data %}
+            <tr>
+                <td>{{i.admissionno}}</td>
+                <td><a href="{% url 'update' %}?a={{i.name}}">{{i.name}}</a></td>
+                <td>{{i.age}}</td>
+                <td>{{i.course}}</td>
+                <td>{{i.year}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <br>
+    <div style="padding-left: 46%;">
+        <button type="button"><a href="{% url 'add' %}">Add</a></button>
+        <button type="button"><a href="{% url 'delete' %}">Remove</a></button>
+        <button type="button"><a href="{% url 'logout' %}">Logout</a></button>
+    </div>
+    {% else %}
+    <center>
+    <h1>Student Management</h1>
+    <h3><a href="{% url 'login' %}" style="color: black;">Login</a></h3>
+    <h3><a href="{% url 'signup' %}" style="color: black; ">Signup</a></h3>
+    <center>
+    {% endif %}
+</body>
+</html>

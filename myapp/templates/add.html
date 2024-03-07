@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add student</title>
+    <style>
+        form{
+            width: 150px;
+            margin: auto;
+
+        }
+    </style>
+</head>
+<body style="background-color: lightblue;">
+    <div style="padding-left: 40%;">
+    <h1 style="font-size: 50px;">Add Student</h1>
+    </div>
+    <div style="padding-left: 0%;">
+    <form method="post" action="{% url 'add' %}">
+        {% csrf_token %}
+        Name:<input type="text" name="name">
+        <br>
+        Age:<input type="number" name="age">
+        <br>
+        Course:<input type="text" name="course">
+        <br>
+        Year:<input type="number" name="year">
+        <br>
+        <button type="submit">Enter</button>
+    </form>
+    <br>
+    </div>
+    <div style="padding-left: 47.5%;">
+    <button type="button"><a href="{% url 'display' %}">Main Page</a></button>
+    </div>
+    <p>{{a}}</p>
+</body>
+</html>
